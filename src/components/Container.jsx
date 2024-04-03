@@ -54,8 +54,9 @@ export default function Container() {
     <>
       <main className="container">
         <Textarea text={text} setText={setText} />
-        <Stats {...stats} />
       </main>
+      <Stats {...stats} />
+
       <ButtonContainer>
         <Button
           label="복사하기"
