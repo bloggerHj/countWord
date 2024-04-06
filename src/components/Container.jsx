@@ -6,7 +6,8 @@ import Button from "./Button";
 import { marked } from "marked";
 
 export default function Container() {
-  const [text, setText] = useState("");
+  const textFromLocalStorage = JSON.parse(localStorage.getItem("text") || "''");
+  const [text, setText] = useState(textFromLocalStorage);
   const [isCopied, setIsCopied] = useState(false);
   const [isReset, setIsReset] = useState(false);
 
@@ -14,6 +15,10 @@ export default function Container() {
     const words = text.match(/[\uAC00-\uD7A3a-zA-Z]+/g);
     return words ? words.length : 0;
   };
+
+  useEffect(() => {
+    localStorage.setItem("text", JSON.stringify(text));
+  }, [text]);
 
   useEffect(() => {
     setTimeout(() => {

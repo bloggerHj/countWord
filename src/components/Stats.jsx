@@ -4,7 +4,6 @@ export default function Stats({
   wordCount,
   sentenceCount,
 }) {
-  console.log(textCountWithSpace);
   return (
     <section className="stats">
       <Stat number={textCountWithSpace} label="공백포함" />
@@ -16,7 +15,6 @@ export default function Stats({
 }
 
 function Stat({ label, number }) {
-  // console.log(number);
   return (
     <section className="stat">
       <span
