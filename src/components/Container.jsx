@@ -6,7 +6,7 @@ import Button from "./Button";
 import { marked } from "marked";
 
 export default function Container() {
-  const textFromLocalStorage = JSON.parse(localStorage.getItem("text") || "''");
+  const textFromLocalStorage = JSON.parse(localStorage.getItem("text") || '""');
   const [text, setText] = useState(textFromLocalStorage);
   const [isCopied, setIsCopied] = useState(false);
   const [isReset, setIsReset] = useState(false);
