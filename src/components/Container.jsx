@@ -48,6 +48,23 @@ export default function Container() {
     }
     return;
   };
+
+  const downloadAsMd = () => {
+    if (text) {
+      const lines = text.split("\n").filter((line) => line.trim() !== "");
+      const title = lines[0].trim() || "content";
+      const blob = new Blob([text], { type: "text/markdown" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${title}.md`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    return;
+  };
+
   const stats = {
     textCountWithSpace: text.replace(/#/g, "").length,
     textCountWithoutSpace: text.replace(/[\s#]+/g, "").length,
@@ -68,6 +85,7 @@ export default function Container() {
           isClicked={isCopied}
           handleClick={copyToClipboard}
         />
+        <Button label="다운로드" handleClick={downloadAsMd} />
         <Button label="초기화" isClicked={isReset} handleClick={resetText} />
       </ButtonContainer>
     </>
